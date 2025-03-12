@@ -167,15 +167,8 @@
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-/* Wrapper for sidebar and content area */
-.pageWrapper {
-  display: flex;
-  min-height: 100vh;
-}
-
 /* Sidebar styling */
 .sidebarArea {
-  width: 250px;
   padding: 20px;
   background: linear-gradient(180deg, rgba(1,32,96,0.8323704481792717) 0%, rgba(5,107,153,0.5690651260504201) 100%);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -212,9 +205,6 @@
   padding: auto;
   
 }
-.sidebarArea{
-  min-width: 250px;
-}
 .side-logo {
   height: 150px;
   margin-top: 20px;
@@ -227,23 +217,8 @@
 
 /* Content area styling */
 .contentArea {
-  flex-grow: 1;
   padding: 20px;
-  height: 100
 }
-/* Mobile responsiveness: stack layout vertically */
-@media (max-width: 992px) {
-  .pageWrapper {
-    flex-direction: column;
-  }
-
-  .sidebarArea {
-    width: 100%;
-    box-shadow: none;
-  }
-}
-
-
 
 .productWrapper{
   width: 100%;
