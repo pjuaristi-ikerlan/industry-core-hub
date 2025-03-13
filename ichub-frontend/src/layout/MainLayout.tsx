@@ -20,27 +20,37 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Grid2 } from '@mui/material';
+
+import Box from '@mui/material/Box';
 
 import Header from '../components/general/Header';
-import Sidebar from '../components/general/Sidebar';
+import DrawerHeader from '../components/sidebar/DrawerHeader';
+import Sidebar from '../components/sidebar/Sidebar';
+
+const drawerWidth = 240;
 
 function MainLayout() {
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Grid2 container direction="column" className="contentWrapper">
-      <Grid2>
-        <Header />
-      </Grid2>
-      <Grid2 container className="pageWrapper" spacing={2}>
-        <Grid2 size={{lg: 2, md: 4, xs: 12}} className="sidebarArea">
-          <Sidebar />
-        </Grid2>
-        <Grid2 size={{lg: 10, md: 8, xs: 12}} className="contentArea">
-          <Outlet />
-        </Grid2>
-      </Grid2>
-    </Grid2>
+    <Box className="contentWrapper">
+      <Header handleDrawerOpen={handleDrawerOpen} open={open} drawerWidth={drawerWidth} />
+      <Sidebar handleDrawerClose={handleDrawerClose} open={open} drawerWidth={drawerWidth}/>      
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Outlet />
+      </Box>
+    </Box>
   );
 };
 

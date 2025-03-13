@@ -20,19 +20,15 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
-import { Menu } from '@catena-x/portal-shared-components';
-import sidebarElements from '../../tests/payloads/sidebar-elements.json'
+import { styled } from '@mui/material/styles';
 
-const Sidebar = () => {
-  return (
-    <Menu
-      items={sidebarElements.map(({ title, subitems }) => ({
-        title,
-        href: '#',
-        children: subitems.map(({ name, link }) => ({ title: name, href: link }))
-      }))}
-    />
-  );
-};
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
 
-export default Sidebar
+export default DrawerHeader;
